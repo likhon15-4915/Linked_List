@@ -106,6 +106,37 @@ while(ptr->next->next!=NULL)
     ptr->next=NULL;
 }
 
+void deleteA()
+{
+    int key;
+    printf("Which node you want to delete (Enter the value): ");
+    scanf("%d",&key);
+    Node *ptr=head;
+    Node *previous;
+    if(ptr==NULL)
+    {
+        printf("Empty Linked list. So, delete operation is not possible.\n");
+        return;
+    }
+    if(ptr!=NULL & ptr->data==key)
+    {
+        head=ptr->next;
+        return;
+    }
+    while(ptr!=NULL & ptr->data!=key)
+    {
+        previous=ptr;
+        ptr=ptr->next;
+    }
+    if(ptr==NULL)
+    {
+        printf("The item is not present in the linked list that you want to delete.\n");
+        return;
+    }
+    previous->next=ptr->next;
+}
+
+
 int main(){
 insertB();
 print();
@@ -117,5 +148,8 @@ deleteh();
 print();
 deleteL();
 print();
+deleteA();
+print();
+    
 }
 
